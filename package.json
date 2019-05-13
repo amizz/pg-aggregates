@@ -10,7 +10,7 @@
     "tslint": "prettier --list-different 'src/**/*' && tslint --config tslint.json --project tsconfig.json",
     "postgraphile": "nodemon --watch dist -x 'postgraphile --append-plugins `pwd`/dist/index.js -c graphile_aggregates -s test --enhance-graphiql --watch --dynamic-json --show-error-stack --extended-errors severity,code,detail,hint,position,internalPosition,internalQuery,where,schema,table,column,dataType,constraint,file,line,routine'",
     "dev": "psql -f __tests__/schema.sql graphile_aggregates && concurrently --kill-others 'npm run watch' 'npm run postgraphile'",
-    "prepack": "rm -Rf dist && npm run build"
+    "prepack": "rimraf -Rf dist && npm run build"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
     "nodemon": "^1.18.10",
     "postgraphile": "^4.4.0-beta.3",
     "prettier": "^1.16.4",
+    "rimraf": "^2.6.3",
     "tslint": "^5.13.1",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.3.3333"
